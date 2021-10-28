@@ -5,6 +5,12 @@ import PackageDescription
 
 let package = Package(
     name: "SceneVideoEngine",
+	platforms: [
+		.iOS(.v13),
+		.macOS(.v10_15),
+		.tvOS(.v13),
+		.watchOS(.v5)
+	],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
@@ -12,6 +18,7 @@ let package = Package(
             targets: ["SceneVideoEngine"]),
     ],
     dependencies: [
+		.package(url: "https://github.com/vooseyllc/VooseyBridge.git", .upToNextMajor(from: "1.2.1")),
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
     ],
@@ -20,7 +27,9 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "SceneVideoEngine",
-            dependencies: []),
+            dependencies: [
+				.product(name: "VooseyBridge", package: "VooseyBridge")
+			]),
         .testTarget(
             name: "SceneVideoEngineTests",
             dependencies: ["SceneVideoEngine"]),

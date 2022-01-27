@@ -6,6 +6,23 @@
 //  Copyright © 2017 Lacy Rhoades. All rights reserved.
 //
 
+#if !os(Linux)
+import Foundation
+#if os(macOS)
+import AppKit
+#endif
+#if os(iOS)
+import UIKit
+#endif
+
+#if os(iOS)
+public typealias NSUIImage = UIImage
+#else
+public typealias NSUIImage = NSImage
+#endif
+#endif
+
+
 import VooseyBridge
 #if !os(macOS)
 import UIKit

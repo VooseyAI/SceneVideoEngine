@@ -15,9 +15,9 @@ import AppKit
 import UIKit
 #endif
 
-#if os(iOS)
+#if canImport(UIKit)
 public typealias NSUIImage = UIImage
-#else
+#elseif canImport(AppKit)
 public typealias NSUIImage = NSImage
 #endif
 #endif
